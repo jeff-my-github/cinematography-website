@@ -1,0 +1,19 @@
+{
+    "projects": [
+      {
+        "title": "Project 1",
+        "description": "Description of Project 1",
+        "category": "Music Video",
+        "video_url": "https://vimeo.com/123456789",
+        "image_url": "assets/images/project1.jpg"
+      },
+      {
+        "title": "Project 2",
+        "description": "Description of Project 2",
+        "category": "Commercial",
+        "video_url": "https://vimeo.com/987654321",
+        "image_url": "assets/images/project2.jpg"
+      }
+    ]
+  }
+  
