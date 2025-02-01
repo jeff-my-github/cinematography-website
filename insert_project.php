@@ -27,9 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
         $image_type = mime_content_type($image_tmp_name);
 
+        // Validate file type and size
         if (in_array($image_type, $allowed_types) && $image_size <= 2 * 1024 * 1024) {
-            // Generate a unique filename
-            $image_path = 'uploads/' . uniqid() . '-' . $image_name;
+            // Ensure the file is a valid image (double check)
+            if (getimagesize($image_tmp_name) === false) {
+                echo "Uploaded file is not a valid image.";
+                exit;
+            }
+
+            // Sanitize the image name to avoid special characters
+            $sanitized_image_name = uniqid() . '-' . preg_replace("/[^a-zA-Z0-9\.\-_]/", "_", $image_name);
+            $image_path = 'uploads/' . $sanitized_image_name;
 
             // Move the uploaded file to the /uploads directory
             if (!move_uploaded_file($image_tmp_name, $image_path)) {
@@ -125,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
+    <!-- Bootstrap form validation -->
     <script>
         // Bootstrap form validation
         (function () {
