@@ -2,7 +2,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/hero-bg.jpg'); background-size: cover; background-position: center;">
+    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg'); background-size: cover; background-position: center;">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-8 col-md-10">

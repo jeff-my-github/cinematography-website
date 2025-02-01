@@ -146,7 +146,7 @@
 
 /* Hero Section */
 .hero {
-    background-image: url('assets/images/hero-bg.jpg');
+    background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -154,9 +154,10 @@
     position: relative;
     text-align: center;
     min-height: 500px; /* Ensure minimum height */
-    border-radius: 15px;
+    /* Remove border-radius here */
 }
 
+/* The overlay will still keep rounded corners */
 .hero::before {
     content: '';
     position: absolute;
