@@ -64,3 +64,21 @@
             </nav>
         </div>
     </header>
+       <!-- Optional: JavaScript to apply dynamic staggered animation delay -->
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Apply staggered fade-in animation to header title and nav links
+            const headerTitle = document.querySelector('h1');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Add the fadeIn animation to the header title
+            headerTitle.classList.add('animate__fadeInUp');
+            headerTitle.style.animationDelay = `0.2s`;
+
+            // Add the fadeIn animation to each nav link with a staggered delay
+            navLinks.forEach((link, index) => {
+                link.classList.add('animate__fadeInUp');
+                link.style.animationDelay = `${(index + 1) * 0.2 + 0.5}s`; // Starting delay of 0.5s
+            });
+        });
+    </script>

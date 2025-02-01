@@ -9,7 +9,7 @@ $projects = getAllProjects($conn);
 
 <section class="portfolio py-5">
     <div class="container">
-        <h2 class="text-center mb-4">My Projects</h2>
+        <h2 class="text-center mb-4 animate__animated animate__fadeInUp">My Projects</h2>
 
         <!-- Filter buttons to categorize projects -->
         <div class="text-center mb-4">
@@ -22,7 +22,7 @@ $projects = getAllProjects($conn);
         <!-- Portfolio Projects Grid -->
         <div class="row" id="projectContainer">
             <?php while ($project = $projects->fetch_assoc()): ?>
-                <div class="col-md-4 mb-4 project-card" data-category="<?php echo $project['category']; ?>">
+                <div class="col-md-4 mb-4 project-card animate__animated" data-category="<?php echo $project['category']; ?>" style="display: none;"> <!-- Initially hide all projects -->
                     <div class="card shadow-sm rounded-lg">
                         <!-- Thumbnail image that opens modal -->
                         <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="card-img-top" alt="Thumbnail of <?php echo htmlspecialchars($project['title']); ?>" data-bs-toggle="modal" data-bs-target="#imageModal<?php echo $project['id']; ?>">
@@ -51,15 +51,14 @@ $projects = getAllProjects($conn);
                     <?php
                         // Display testimonials for each project
                         $testimonials = getTestimonialByProject($conn, $project['id']);
-                        while ($testimonial = $testimonials->fetch_assoc()):
-                    ?>
-                        <div class="testimonial mt-3">
-                            <blockquote class="blockquote">
-                                <p class="mb-0"><?php echo nl2br(htmlspecialchars($testimonial['message'])); ?></p>
-                                <footer class="blockquote-footer"><?php echo htmlspecialchars($testimonial['name']); ?>, <cite title="Source Title"><?php echo htmlspecialchars($testimonial['title']); ?></cite></footer>
-                            </blockquote>
-                        </div>
-                    <?php endwhile; ?>
+                        while ($testimonial = $testimonials->fetch_assoc()): ?>
+                            <div class="testimonial mt-3">
+                                <blockquote class="blockquote">
+                                    <p class="mb-0"><?php echo nl2br(htmlspecialchars($testimonial['message'])); ?></p>
+                                    <footer class="blockquote-footer"><?php echo htmlspecialchars($testimonial['name']); ?>, <cite title="Source Title"><?php echo htmlspecialchars($testimonial['title']); ?></cite></footer>
+                                </blockquote>
+                            </div>
+                        <?php endwhile; ?>
                 </div>
             <?php endwhile; ?>
         </div>
@@ -69,10 +68,21 @@ $projects = getAllProjects($conn);
 <?php
 include('includes/footer.php');
 ?>
+
 <script>
     // JavaScript for Filtering Projects
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projects = document.querySelectorAll('.project-card');
+
+    // Function to add animation after a delay for each project card
+    const applyAnimation = (visibleProjects) => {
+        visibleProjects.forEach((project, index) => {
+            setTimeout(() => {
+                project.classList.add('animate__fadeInUp'); // Add staggered animation
+                project.style.display = 'block'; // Make project visible
+            }, index * 300); // Stagger animation delay for each card
+        });
+    };
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -83,14 +93,27 @@ include('includes/footer.php');
             button.classList.add('active');
 
             // Show or hide projects based on the selected category
-            projects.forEach(project => {
+            let visibleProjects = [];
+            projects.forEach((project) => {
                 if (category === 'all' || project.getAttribute('data-category') === category) {
-                    project.style.display = 'block';
+                    visibleProjects.push(project);
+                    project.classList.remove('animate__animated', 'animate__fadeInUp'); // Reset animation
+                    project.classList.add('animate__animated'); // Ensure base animation class is present
                 } else {
-                    project.style.display = 'none';
+                    project.style.display = 'none'; // Hide non-matching projects
                 }
             });
+
+            // Apply staggered fadeIn animation
+            applyAnimation(visibleProjects);
         });
     });
 
+    // Initial animation when the page loads
+    window.addEventListener('load', () => {
+        const allProjects = document.querySelectorAll('.project-card');
+        applyAnimation(allProjects); // Apply the animation when the page is loaded
+    });
 </script>
+
+
