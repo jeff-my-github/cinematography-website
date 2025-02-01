@@ -1,31 +1,163 @@
-/* styles.css */
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-}
-
-header {
-    background-color: #333;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-}
-
-.card {
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Portfolio Card */
 .card-img-top {
     height: 200px;
     object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
-.testimonial blockquote {
+.card-img-top:hover {
+    transform: scale(1.05); /* Zoom in effect on hover */
+}
+
+.card-body {
     background-color: #f8f9fa;
     padding: 20px;
-    border-left: 5px solid #007bff;
+    border-top: 1px solid #ddd; /* Subtle border to separate the image from the content */
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.card-title:hover {
+    color: #007bff; /* Change color to blue when hovered */
+}
+
+.card-text {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Hover effect for cards */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+}
+
+/* Carousel */
+.carousel-item {
+    transition: transform 1s ease, opacity 1s ease;
+    border-radius: 10px; /* Rounded corners for carousel items */
+    overflow: hidden; /* Ensures content doesn't overflow */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* Ensures images fill the container without stretching */
+    border-radius: 10px; /* Rounded corners for images */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #007bff; /* Customize navigation button color */
+    border-radius: 50%; /* Round navigation buttons */
+    padding: 10px;
+}
+
+.carousel-indicators li {
+    background-color: #007bff; /* Color of the carousel indicators */
+    border-radius: 50%; /* Round indicators */
+}
+
+.carousel-indicators .active {
+    background-color: #0056b3; /* Active indicator color */
+}
+
+/* Card Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.col-md-4 {
+    flex: 1 0 30%;
+    margin-bottom: 1.5rem;
+}
+
+/* Service Cards */
+.service-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.service-card:hover {
+    background-color: #f1f1f1; /* Light background on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('assets/images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.25rem;
+}
+
+.hero .btn {
+    font-size: 1.1rem;
+    padding: 10px 30px;
+}
+
+/* Featured Projects Section */
+.featured-projects .card {
+    border-radius: 10px;
+    overflow: hidden; /* Ensures rounded corners for the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-projects .card:hover {
+    transform: translateY(-10px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* CTA Section */
+.cta {
+    background-image: url('assets/images/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 0;
+}
+
+.cta h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.cta .btn {
+    font-size: 1.2rem;
+    padding: 12px 40px;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.cta .btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
