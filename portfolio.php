@@ -77,6 +77,12 @@ include('includes/footer.php');
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const category = button.getAttribute('data-category');
+
+            // Toggle active class for the selected filter
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Show or hide projects based on the selected category
             projects.forEach(project => {
                 if (category === 'all' || project.getAttribute('data-category') === category) {
                     project.style.display = 'block';
@@ -86,4 +92,5 @@ include('includes/footer.php');
             });
         });
     });
+
 </script>

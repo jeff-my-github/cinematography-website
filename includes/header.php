@@ -13,20 +13,53 @@
     
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="assets/images/favicon.ico">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <!-- Animate.css for animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico">
 </head>
 <body>
     <header class="bg-dark text-white py-3">
         <div class="container">
-            <h1 class="text-center">Cinematography Portfolio</h1>
+            <!-- Header Title -->
+            <h1 class="text-center animate__animated animate__fadeIn">Cinematography Portfolio</h1>
+
+            <!-- Navigation -->
             <nav>
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link text-white" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="portfolio.php">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="services.php">Services</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="contact.php">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-1s" href="index.php">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-1s" href="portfolio.php">
+                            <i class="fas fa-camera"></i> Portfolio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-2s" href="about.php">
+                            <i class="fas fa-info-circle"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-2s" href="services.php">
+                            <i class="fas fa-briefcase"></i> Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-3s" href="contact.php">
+                            <i class="fas fa-phone-alt"></i> Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

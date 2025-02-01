@@ -1,7 +1,8 @@
 /* Portfolio Card */
 .card-img-top {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    border-radius: 15px 15px 0 0;
     transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
@@ -13,10 +14,11 @@
     background-color: #f8f9fa;
     padding: 20px;
     border-top: 1px solid #ddd; /* Subtle border to separate the image from the content */
+    border-radius: 0 0 15px 15px; /* Rounded corners for the card body */
 }
 
 .card-title {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-weight: bold;
     color: #333;
     transition: color 0.3s ease; /* Smooth color transition on hover */
@@ -30,39 +32,41 @@
     color: #555;
     font-size: 1rem;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 /* Hover effect for cards */
 .card {
     border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px); /* Lift effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-12px); /* Lift effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
 }
 
 /* Carousel */
 .carousel-item {
     transition: transform 1s ease, opacity 1s ease;
-    border-radius: 10px; /* Rounded corners for carousel items */
+    border-radius: 15px; /* Rounded corners for carousel items */
     overflow: hidden; /* Ensures content doesn't overflow */
 }
 
 .carousel-item img {
     width: 100%;
-    height: 400px;
+    height: 450px;
     object-fit: cover; /* Ensures images fill the container without stretching */
-    border-radius: 10px; /* Rounded corners for images */
+    border-radius: 15px; /* Rounded corners for images */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #007bff; /* Customize navigation button color */
     border-radius: 50%; /* Round navigation buttons */
-    padding: 10px;
+    padding: 12px;
 }
 
 .carousel-indicators li {
@@ -90,8 +94,8 @@
 .service-card {
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -110,6 +114,7 @@
     position: relative;
     text-align: center;
     min-height: 500px; /* Ensure minimum height */
+    border-radius: 15px;
 }
 
 .hero::before {
@@ -141,6 +146,9 @@
     border-radius: 50px; /* Rounded button */
     transition: background-color 0.3s ease;
     text-transform: uppercase;
+    background-color: #007bff;
+    border: none;
+    color: white;
 }
 
 .hero-btn:hover {
@@ -184,14 +192,14 @@
 
 /* Featured Projects Section */
 .featured-projects .card {
-    border-radius: 10px;
+    border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .featured-projects .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-12px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* CTA Section */
@@ -201,6 +209,7 @@
     background-position: center;
     color: white;
     padding: 80px 0;
+    border-radius: 15px 15px 0 0; /* Border radius applied only on top */
 }
 
 .cta h3 {
@@ -215,6 +224,7 @@
     background-color: #007bff;
     border-color: #007bff;
     text-transform: uppercase;
+    color: white;
 }
 
 .cta .btn:hover {
@@ -223,11 +233,12 @@
 }
 
 
+
 /* contact.php css */
 /* Social Media Icon Styling */
 .social-icon {
-    width: 40px; /* Set the size of the icons */
-    height: 40px;
+    width: 45px; /* Set the size of the icons */
+    height: 45px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -238,6 +249,6 @@
 
 /* Optional: Adjust spacing for icons */
 .social-media-links a {
-    margin-right: 15px; /* Space between each social icon */
+    margin-right: 20px; /* Space between each social icon */
 }
 
