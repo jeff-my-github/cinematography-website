@@ -2,7 +2,10 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg'); background-size: cover; background-position: center; ">
+    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg'); background-size: cover; background-position: center; position: relative;">
+        <!-- Transparent Overlay -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: -1;"></div>
+
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-8 col-md-10">
@@ -13,6 +16,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Featured Projects Section -->
     <section class="featured-projects py-5">
