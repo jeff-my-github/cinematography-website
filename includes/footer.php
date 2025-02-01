@@ -1,7 +1,12 @@
 <!-- footer.php -->
 <footer class="bg-dark text-white text-center py-3">
     <p>&copy; <?php echo date("Y"); ?> Cinematography Portfolio. All rights reserved.</p>
-    <p>Follow me on <a href="https://www.instagram.com/yourprofile" target="_blank" class="text-white">Instagram</a></p>
+    
+    <p>Follow me on: 
+        <a href="https://www.instagram.com/yourprofile" target="_blank" class="text-white">Instagram</a> | 
+        <a href="https://www.facebook.com/yourprofile" target="_blank" class="text-white">Facebook</a> | 
+        <a href="https://www.youtube.com/channel/yourchannel" target="_blank" class="text-white">YouTube</a>
+    </p>
 </footer>
 
 <!-- Bootstrap JS and Popper.js -->

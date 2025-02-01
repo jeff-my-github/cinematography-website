@@ -23,7 +23,7 @@ $projects = getAllProjects($conn);
         <div class="row" id="projectContainer">
             <?php while ($project = $projects->fetch_assoc()): ?>
                 <div class="col-md-4 mb-4 project-card" data-category="<?php echo $project['category']; ?>">
-                    <div class="card">
+                    <div class="card shadow-sm rounded-lg">
                         <!-- Thumbnail image that opens modal -->
                         <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="card-img-top" alt="Thumbnail of <?php echo htmlspecialchars($project['title']); ?>" data-bs-toggle="modal" data-bs-target="#imageModal<?php echo $project['id']; ?>">
                         <div class="card-body">
@@ -42,7 +42,7 @@ $projects = getAllProjects($conn);
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="img-fluid" alt="Large image of <?php echo htmlspecialchars($project['title']); ?>">
+                                    <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="img-fluid rounded" alt="Large image of <?php echo htmlspecialchars($project['title']); ?>">
                                 </div>
                             </div>
                         </div>
