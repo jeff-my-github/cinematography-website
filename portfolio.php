@@ -25,7 +25,7 @@ $projects = getAllProjects($conn);
                 <div class="col-md-4 mb-4 project-card animate__animated" data-category="<?php echo $project['category']; ?>" style="display: none;"> <!-- Initially hide all projects -->
                     <div class="card shadow-sm rounded-lg">
                         <!-- Thumbnail image that opens modal -->
-                        <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="card-img-top" alt="Thumbnail of <?php echo htmlspecialchars($project['title']); ?>" data-bs-toggle="modal" data-bs-target="#imageModal<?php echo $project['id']; ?>">
+                        <img src="<?php echo '/cinematography-portfolio/' . 'uploads/' . htmlspecialchars($project['image_url']); ?>" class="card-img-top" alt="Thumbnail of <?php echo htmlspecialchars($project['title']); ?>" data-bs-toggle="modal" data-bs-target="#imageModal<?php echo $project['id']; ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($project['title']); ?></h5>
                             <p class="card-text"><?php echo nl2br(htmlspecialchars($project['description'])); ?></p>
@@ -42,7 +42,7 @@ $projects = getAllProjects($conn);
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img src="assets/images/<?php echo htmlspecialchars($project['image_url']); ?>" class="img-fluid rounded" alt="Large image of <?php echo htmlspecialchars($project['title']); ?>">
+                                    <img src="<?php echo '/cinematography-portfolio/' . 'uploads/' . htmlspecialchars($project['image_url']); ?>" class="img-fluid rounded" alt="Large image of <?php echo htmlspecialchars($project['title']); ?>">
                                 </div>
                             </div>
                         </div>
@@ -115,5 +115,8 @@ include('includes/footer.php');
         applyAnimation(allProjects); // Apply the animation when the page is loaded
     });
 </script>
+
+
+
 
 

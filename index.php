@@ -2,7 +2,7 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg'); background-size: cover; background-position: center;">
+    <section class="hero text-white text-center py-5" style="background-image: url('assets/images/d-ng-tr-n-qu-c-HRkO49HleGc-unsplash.jpg'); background-size: cover; background-position: center; ">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-8 col-md-10">
@@ -22,7 +22,7 @@
                 <!-- Project 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg rounded animate__animated">
-                        <img src="assets/images/project1.jpg" class="card-img-top" alt="Project 1">
+                        <img src="assets/images/allan-lainez-kUrN7skF79I-unsplash.jpg" class="card-img-top" alt="Project 1">
                         <div class="card-body">
                             <h5 class="card-title">Project 1</h5>
                             <p class="card-text">A stunning music video showcasing cinematic shots and storytelling.</p>
@@ -34,7 +34,7 @@
                 <!-- Project 2 -->
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg rounded animate__animated">
-                        <img src="assets/images/project2.jpg" class="card-img-top" alt="Project 2">
+                        <img src="assets/images/mae-mu-74HGrqRby2Q-unsplash.jpg" class="card-img-top" alt="Project 2">
                         <div class="card-body">
                             <h5 class="card-title">Project 2</h5>
                             <p class="card-text">A captivating commercial project for a well-known brand.</p>
@@ -46,7 +46,7 @@
                 <!-- Project 3 -->
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-lg rounded animate__animated">
-                        <img src="assets/images/project3.jpg" class="card-img-top" alt="Project 3">
+                        <img src="assets/images/kal-visuals-IJzTAns4kUk-unsplash.jpg" class="card-img-top" alt="Project 3">
                         <div class="card-body">
                             <h5 class="card-title">Project 3</h5>
                             <p class="card-text">An exciting short film with innovative camera work and lighting design.</p>
