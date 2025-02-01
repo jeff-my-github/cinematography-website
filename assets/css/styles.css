@@ -106,33 +106,91 @@
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 100px 0;
+    padding: 120px 0; /* Adjust padding for better appearance on larger screens */
+    position: relative;
+    text-align: center;
+    min-height: 500px; /* Ensure minimum height */
 }
 
-.hero h1 {
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for better text readability */
+    z-index: -1;
+}
+
+.hero-title {
     font-size: 3rem;
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 1.25rem;
+.hero-description {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
 }
 
-.hero .btn {
-    font-size: 1.1rem;
-    padding: 10px 30px;
+.hero-btn {
+    font-size: 1.2rem;
+    padding: 12px 35px;
+    border-radius: 50px; /* Rounded button */
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.hero-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-description {
+        font-size: 1.2rem;
+    }
+
+    .hero-btn {
+        font-size: 1rem;
+        padding: 10px 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem; /* Smaller font size on very small screens */
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .hero-btn {
+        font-size: 0.9rem;
+        padding: 10px 25px;
+    }
 }
 
 /* Featured Projects Section */
 .featured-projects .card {
     border-radius: 10px;
-    overflow: hidden; /* Ensures rounded corners for the card */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .featured-projects .card:hover {
-    transform: translateY(-10px); /* Slightly lift the card */
+    transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -148,6 +206,7 @@
 .cta h3 {
     font-size: 2.5rem;
     font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .cta .btn {
@@ -155,6 +214,7 @@
     padding: 12px 40px;
     background-color: #007bff;
     border-color: #007bff;
+    text-transform: uppercase;
 }
 
 .cta .btn:hover {

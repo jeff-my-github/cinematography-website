@@ -2,11 +2,15 @@
 
 <main>
     <!-- Hero Section -->
-    <section class="hero bg-primary text-white text-center py-5">
+    <section class="hero text-white text-center py-5">
         <div class="container">
-            <h1 class="display-3">Welcome to My Cinematography Portfolio</h1>
-            <p class="lead">Explore my work and get in touch!</p>
-            <a href="portfolio.php" class="btn btn-light btn-lg mt-3">View Portfolio</a>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <h1 class="display-4 hero-title">Welcome to My Cinematography Portfolio</h1>
+                    <p class="lead hero-description">Explore my work and get in touch!</p>
+                    <a href="portfolio.php" class="btn btn-light btn-lg hero-btn mt-3">View Portfolio</a>
+                </div>
+            </div>
         </div>
     </section>
 
