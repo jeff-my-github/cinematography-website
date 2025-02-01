@@ -1,16 +1,18 @@
 <?php
 // db.php
 
-$servername = "localhost";  // Typically localhost
-$username = "root";         // Your MySQL username
-$password = "";             // Your MySQL password
-$dbname = "cinematography_portfolio";  // Your database name
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_DATABASE', 'cinematography_portfolio');
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+    if ($conn->connect_error) {
+        throw new Exception("Connection failed: " . $conn->connect_error);
+    }
+} catch (Exception $e) {
+    die("Database connection error: " . $e->getMessage());
 }
+
 ?>
