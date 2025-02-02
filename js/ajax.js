@@ -1,68 +1,60 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Select the form and response message container
     const form = document.getElementById('contact-form');
     const responseMessage = document.getElementById('response-message');
 
-    // Listen for form submission
     form.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent the form from submitting the traditional way
+        e.preventDefault(); // Prevent the form from submitting traditionally
 
         // Get form data
         const formData = new FormData(form);
 
-        // Disable the submit button to prevent multiple submissions
+        // Disable submit button to prevent multiple submissions
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.innerText = "Sending...";
 
-        // Create AJAX request
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'submit-contact.php', true);
-
-        // Listen for response from the server
-        xhr.onload = function() {
+        // Send the form data via fetch as JSON to process-contact.php
+        fetch('process-contact.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',  // Important: set header to send JSON
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: JSON.stringify({
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            })
+        })
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => {
             submitButton.disabled = false;
             submitButton.innerText = "Send Message";
 
-            if (xhr.status === 200) {
-                try {
-                    const response = JSON.parse(xhr.responseText);
+            if (data.success) {
+                // Show success message
+                responseMessage.style.color = 'green';
+                responseMessage.innerHTML = data.message;
 
-                    // Check if the response is successful
-                    if (response.success) {
-                        responseMessage.style.color = 'green';
-                        responseMessage.innerHTML = response.message;
+                // Clear form fields
+                form.reset();
 
-                        // Clear form fields
-                        form.reset();
-
-                        // Optionally clear the message after a few seconds
-                        setTimeout(function() {
-                            responseMessage.innerHTML = '';
-                        }, 5000); // Clear after 5 seconds
-                    } else {
-                        responseMessage.style.color = 'red';
-                        responseMessage.innerHTML = response.message;
-                    }
-                } catch (e) {
-                    responseMessage.style.color = 'red';
-                    responseMessage.innerHTML = 'Invalid JSON response';
-                    console.error('Invalid JSON response', e);
-                }
+                // Optionally clear the message after 5 seconds
+                setTimeout(() => {
+                    responseMessage.innerHTML = '';
+                }, 5000);
             } else {
+                // Show error message
                 responseMessage.style.color = 'red';
-                responseMessage.innerHTML = 'Something went wrong. Please try again later.';
+                responseMessage.innerHTML = data.message;
             }
-        };
-
-        // Prepare data as JSON
-        const data = {
-            name: formData.get('name'),
-            email: formData.get('email'),
-            message: formData.get('message')
-        };
-
-        // Send the data as JSON
-        xhr.send(JSON.stringify(data));
+        })
+        .catch(error => {
+            submitButton.disabled = false;
+            submitButton.innerText = "Send Message";
+            responseMessage.style.color = 'red';
+            responseMessage.innerHTML = 'Something went wrong. Please try again later.';
+            console.error('Error:', error);
+        });
     });
 });

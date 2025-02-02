@@ -1,56 +1,8 @@
-
-
 <?php
 // submit-contact.php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-include('db/db.php'); // Include the database connection
-
-// Check if the request is AJAX and method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the raw POST data
-    $data = json_decode(file_get_contents('php://input'), true);
-
-    // Check if data is valid
-    if (isset($data['name']) && isset($data['email']) && isset($data['message'])) {
-        // Prepare data
-        $name = $conn->real_escape_string($data['name']);
-        $email = $conn->real_escape_string($data['email']);
-        $message = $conn->real_escape_string($data['message']);
-
-        // Insert data into contact_submissions table
-        $query = "INSERT INTO contact_submissions (name, email, message) VALUES ('$name', '$email', '$message')";
-        
-        if ($conn->query($query)) {
-            // Success response
-            $response = array(
-                'success' => true,
-                'message' => 'Thank you for reaching out! Your message has been successfully sent. We\'ll get back to you shortly.'
-            );
-        } else {
-            // Error response
-            $response = array(
-                'success' => false,
-                'message' => 'There was an error sending your message. Please try again later.'
-            );
-        }
-
-        // Set the content type to JSON
-        header('Content-Type: application/json');
-
-        // Return JSON response
-        echo json_encode($response);
-        exit;
-    } else {
-        // Invalid data response
-        header('Content-Type: application/json');
-        echo json_encode(array('success' => false, 'message' => 'All fields are required.'));
-        exit;
-    }
-}
+include('includes/header.php'); // Include header
 
 ?>
-
 
 <div class="container" style="max-width: 550px; margin: 50px auto; background-color: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
     <h2 style="text-align: center; font-size: 32px; font-weight: 600; color: #333; margin-bottom: 30px;">Contact Me</h2>
@@ -81,3 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script src="js/ajax.js"></script>
 
+<?php
+include('includes/footer.php'); // Include footer
+?>
