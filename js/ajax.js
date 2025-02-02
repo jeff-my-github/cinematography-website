@@ -1,37 +1,68 @@
-// js/ajax.js
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the form and response message container
+    const form = document.getElementById('contact-form');
+    const responseMessage = document.getElementById('response-message');
 
-    // Get the form data
-    var formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
+    // Listen for form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting the traditional way
 
-    // Create an XMLHttpRequest object
-    var xhr = new XMLHttpRequest();
-    
-    // Configure it: POST to submit-contact.php
-    xhr.open('POST', 'submit-contact.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/json'); // Send as JSON
+        // Get form data
+        const formData = new FormData(form);
 
-    // Handle the response
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            var responseMessage = document.getElementById('response-message');
+        // Disable the submit button to prevent multiple submissions
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.innerText = "Sending...";
 
-            if (response.success) {
-                responseMessage.innerHTML = '<div class="alert alert-success">' + response.message + '</div>';
+        // Create AJAX request
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'submit-contact.php', true);
+
+        // Listen for response from the server
+        xhr.onload = function() {
+            submitButton.disabled = false;
+            submitButton.innerText = "Send Message";
+
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+
+                    // Check if the response is successful
+                    if (response.success) {
+                        responseMessage.style.color = 'green';
+                        responseMessage.innerHTML = response.message;
+
+                        // Clear form fields
+                        form.reset();
+
+                        // Optionally clear the message after a few seconds
+                        setTimeout(function() {
+                            responseMessage.innerHTML = '';
+                        }, 5000); // Clear after 5 seconds
+                    } else {
+                        responseMessage.style.color = 'red';
+                        responseMessage.innerHTML = response.message;
+                    }
+                } catch (e) {
+                    responseMessage.style.color = 'red';
+                    responseMessage.innerHTML = 'Invalid JSON response';
+                    console.error('Invalid JSON response', e);
+                }
             } else {
-                responseMessage.innerHTML = '<div class="alert alert-danger">' + response.message + '</div>';
+                responseMessage.style.color = 'red';
+                responseMessage.innerHTML = 'Something went wrong. Please try again later.';
             }
-        } else {
-            alert('Something went wrong. Please try again.');
-        }
-    };
+        };
 
-    // Send the form data as JSON
-    xhr.send(JSON.stringify(formData));
+        // Prepare data as JSON
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
+
+        // Send the data as JSON
+        xhr.send(JSON.stringify(data));
+    });
 });
