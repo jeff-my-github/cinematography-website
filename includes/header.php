@@ -65,7 +65,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-3s" href="contact.php">
+                        <a class="nav-link text-white animate__animated animate__fadeIn animate__delay-3s" href="submit-contact.php">
                             <i class="fas fa-phone-alt"></i> Contact
                         </a>
                     </li>

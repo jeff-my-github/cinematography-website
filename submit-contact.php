@@ -1,48 +1,69 @@
-<?php include('includes/header.php'); ?>
+<?php
+// submit-contact.php
+include('includes/header.php');
+include('db/db.php'); // Include the database connection
 
-<section id="submit-contact" class="submit-contact py-5 bg-light">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h1 class="display-3 mb-4 animate__animated animate__fadeInUp">Contact Form</h1>
-            <p class="lead text-muted animate__animated animate__fadeInUp">
-                Please fill out the form below to get in touch with me. I will respond as soon as possible!
-            </p>
+// Check if the request is AJAX and method is POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the raw POST data
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    // Check if data is valid
+    if (isset($data['name']) && isset($data['email']) && isset($data['message'])) {
+        // Prepare data
+        $name = $conn->real_escape_string($data['name']);
+        $email = $conn->real_escape_string($data['email']);
+        $message = $conn->real_escape_string($data['message']);
+
+        // Insert data into contact_submissions table
+        $query = "INSERT INTO contact_submissions (name, email, message) VALUES ('$name', '$email', '$message')";
+        
+        if ($conn->query($query)) {
+            // Success response
+            $response = array(
+                'success' => true,
+                'message' => 'Your message has been successfully sent. I\'ll get back to you shortly.'
+            );
+        } else {
+            // Error response
+            $response = array(
+                'success' => false,
+                'message' => 'There was an error sending your message. Please try again later.'
+            );
+        }
+
+        // Return JSON response
+        echo json_encode($response);
+        exit;
+    } else {
+        // Invalid data response
+        echo json_encode(array('success' => false, 'message' => 'All fields are required.'));
+        exit;
+    }
+}
+
+?>
+
+<div class="container my-5">
+    <h2>Contact Me</h2>
+    <form id="contact-form" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
-
-        <!-- Contact Form -->
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <form action="submit-contact.php" method="POST" id="contactForm" class="shadow-lg rounded p-4 bg-white">
-                    <div class="form-group">
-                        <label for="name" class="font-weight-bold">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control form-control-lg" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="font-weight-bold">Your Email</label>
-                        <input type="email" id="email" name="email" class="form-control form-control-lg" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="font-weight-bold">Your Message</label>
-                        <textarea id="message" name="message" class="form-control form-control-lg" rows="6" required></textarea>
-                    </div>
-                    <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary btn-lg mt-3">Send Message</button>
-                    </div>
-                </form>
-
-                <!-- Success Message -->
-                <div id="successMessage" class="alert alert-success mt-4 d-none">
-                    Your message has been successfully sent! I will get back to you shortly.
-                </div>
-
-                <!-- Error Message -->
-                <div id="errorMessage" class="alert alert-danger mt-4 d-none">
-                    Something went wrong. Please try again later.
-                </div>
-            </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
-    </div>
-</section>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
 
-<script src="js/script.js"></script>
+    <div id="response-message" class="mt-3"></div>
+</div>
+<!-- Include the AJAX script -->
+<script src="js/ajax.js"></script>
 <?php include('includes/footer.php'); ?>
