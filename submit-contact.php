@@ -1,8 +1,10 @@
-<?php
+<?php 
 // submit-contact.php
 include('includes/header.php'); // Include header
-
 ?>
+
+
+
 
 <div class="container" style="max-width: 550px; margin: 50px auto; background-color: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
     <h2 style="text-align: center; font-size: 32px; font-weight: 600; color: #333; margin-bottom: 30px;">Contact Me</h2>

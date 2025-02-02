@@ -97,7 +97,7 @@
         <div class="container">
             <h3 class="display-4 animate__animated">Ready to take your project to the next level?</h3>
             <p class="lead animate__animated">Contact me today and let's bring your vision to life!</p>
-            <a href="contact.php" class="btn btn-light btn-lg animate__animated">Get in Touch</a>
+            <a href="submit-contact.php" class="btn btn-light btn-lg animate__animated">Get in Touch</a>
         </div>
     </section>
 </main>
